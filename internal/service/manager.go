@@ -1,23 +1,18 @@
 package service
 
 import (
-	"context"
-	"github.com/zhanserikKalmukhambet/blog-api/internal/entity"
+	"github.com/zhanserikKalmukhambet/blog-api/internal/config"
+	"github.com/zhanserikKalmukhambet/blog-api/internal/repository"
 )
 
-type Service interface {
-	CreateUser(ctx context.Context, u *entity.User) error
-	//Login(ctx context.Context, username, password string) (string, error)
-	//UpdateUser(ctx context.Context, u *entity.User) error
-	//DeleteUser(ctx context.Context, id int64) error
-	//VerifyToken(token string) error
-	//
-	//CreateArticle(ctx context.Context, a *entity.Article) error
-	//UpdateArticle(ctx context.Context, a *entity.Article) error
-	//DeleteArticle(ctx context.Context, id int64) error
-	//GetArticleByID(ctx context.Context, id int64) (*entity.Article, error)
-	//GetAllArticles(ctx context.Context) ([]entity.Article, error)
-	//GetArticlesByUserID(ctx context.Context, userID int64) ([]entity.Article, error)
-	//
-	//GetCategories(ctx context.Context) ([]entity.Category, error)
+type Manager struct {
+	Repository repository.Repository
+	Config     *config.Config
+}
+
+func New(repository repository.Repository, config *config.Config) *Manager {
+	return &Manager{
+		Repository: repository,
+		Config:     config,
+	}
 }
